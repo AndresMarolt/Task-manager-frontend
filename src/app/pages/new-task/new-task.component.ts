@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './new-task.component.html',
   styleUrls: ['./new-task.component.scss']
 })
-export class NewTaskComponent implements OnInit {
+export class NewTaskComponent {
 
   public form: FormGroup;
   listsSubscription: Subscription;
@@ -29,15 +29,11 @@ export class NewTaskComponent implements OnInit {
       title: ['', [Validators.required]]
     })
   };
-  
-  ngOnInit(): void {
-    console.log(this.listId);
-  }
+ 
 
   createNewTask(title: string) {
     this.taskService.createListTasks(this.listId, title).subscribe((response: any) => {
       this.taskService.getTasks(this.listId);
-      // console.log(this.taskService.getTasks(this.listId));
       this.dialogRef.close();
     });
   }
