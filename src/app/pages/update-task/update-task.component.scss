@@ -1,0 +1,12 @@
+button {
+    background-color: #1f54a4;
+
+    &:hover {
+        background-color: #17417e;
+    }
+}
+@media(min-width: 576px) {
+    .dialog_container {
+        width: 80vh;
+    }
+}

@@ -1,0 +1,20 @@
+<div class="centered-content mx-auto d-flex align-items-center justify-content-center">
+    <form [formGroup]="form" action="" class="d-flex flex-column p-5" (ngSubmit)="onSignupClick(form.value)">
+        <h3 class="mb-4">Sign up with a new account</h3>
+        <mat-form-field appearance="fill" class="col-12">
+            <mat-label>Email</mat-label>
+            <mat-icon matPrefix aria-hidden="false" aria-label="Example thumbs up SVG icon">email</mat-icon>
+            <input type="text" formControlName="email" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-12">
+            <mat-label>Password</mat-label>
+            <mat-icon matPrefix aria-hidden="false" aria-label="Example thumbs up SVG icon">lock</mat-icon>
+            <input type="password" formControlName="password" matInput>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button class="col-6 mx-auto">Sign Up</button>
+
+        <p class="mb-0 mt-3 text-center">Already have an account? <a routerLink="/login">Log in!</a></p>
+    </form>
+</div>

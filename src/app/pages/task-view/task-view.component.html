@@ -1,0 +1,68 @@
+<div class="col-11 col-sm-9 mx-auto d-flex justify-content-end pt-3 pt-md-0">
+    <button (click)="removeSession()" mat-stroked-button class="logout-btn" id="logout-mobile">
+        <mat-icon aria-hidden="false" >logout</mat-icon>
+    </button>
+</div>
+<div class="centered-content mx-auto pt-4 d-flex flex-column flex-md-row justify-content-start justify-content-md-between col-11 col-sm-9">
+    <div class="d-flex flex-column flex-sm-row align-items-center align-items-md-start center col-12 border-radius" style="background-color: rgb(236, 236, 236);">
+        
+        <div class="lists_section bg-light p-4 p-md-3 p-lg-5 col-12 col-sm-4">
+            <div class="d-flex align-items-center justify-content-center justify-content-md-between">
+                <h2 class="mb-2 text-center">Lists</h2>
+                <div class="settings-icon">
+                    <button mat-button [matMenuTriggerFor]="beforeMenu">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                    <mat-menu #beforeMenu="matMenu" xPosition="before">
+                        <button mat-menu-item (click)="onClickEditList()">Edit</button>
+                        <button mat-menu-item (click)="deleteList()" ><p class="text-danger mb-0">Delete</p></button>
+                    </mat-menu>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column justify-content-between lists-container">
+                <button class="p-1 text-decoration-none" href="" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
+                    <p>{{list.title}}</p>
+                </button>
+            </div>
+            
+            <button class="col-12 mt-4 add-list" mat-stroked-button (click)="openListsDialog()">+ List</button>
+        </div>
+        
+        <div class="tasks_section p-4 pb-5 p-md-5 my-3 my-md-0 col-12 col-sm-8 border-radius-right">
+            <button (click)="removeSession()" mat-stroked-button class="logout-btn" id="logout-desktop">
+                <mat-icon aria-hidden="false" >logout</mat-icon>
+            </button>
+            <div *ngIf="currentListId">
+                <div class="d-flex justify-content-between">
+                    <h2>Tasks</h2>
+                </div>
+        
+                <div class="height-set">
+                    <div class="d-flex flex-column justify-content-between mb-4" style="height: 100%;">
+                        <div *ngIf="!tasks.length">
+                            No tasks yet in this list!
+                        </div>
+                        <div class="task mb-1 d-flex justify-content-between align-items-center col-12" *ngFor="let task of tasks" (click)="onClickTask({task: task, event: $event})">
+                            <p [ngClass]="{ 'completed': task.completed }">{{task.title}}</p>
+                            <div class="d-flex align-items-center gap-2">
+                                <mat-icon id="edit_task" (click)="onTaskEditClick(task)">edit</mat-icon>
+                                <mat-icon id="delete_task" (click)="onTaskDeleteClick(task._id)">delete</mat-icon>
+                            </div>
+                        </div>
+                        <p *ngIf="!tasks">No tasks yet!</p>
+                    </div>
+                </div>
+    
+                <button class="add_task-button d-flex align-items-center" (click)="openTasksDialog()">
+                    <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.984"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.75 11.25V5C12.75 4.80109 12.671 4.61032 12.5303 4.46967C12.3897 4.32902 12.1989 4.25 12 4.25C11.8011 4.25 11.6103 4.32902 11.4697 4.46967C11.329 4.61032 11.25 4.80109 11.25 5V11.25H5C4.80109 11.25 4.61032 11.329 4.46967 11.4697C4.32902 11.6103 4.25 11.8011 4.25 12C4.25 12.1989 4.32902 12.3897 4.46967 12.5303C4.61032 12.671 4.80109 12.75 5 12.75H11.25V19C11.2526 19.1981 11.3324 19.3874 11.4725 19.5275C11.6126 19.6676 11.8019 19.7474 12 19.75C12.1989 19.75 12.3897 19.671 12.5303 19.5303C12.671 19.3897 12.75 19.1989 12.75 19V12.75H19C19.1989 12.75 19.3897 12.671 19.5303 12.5303C19.671 12.3897 19.75 12.1989 19.75 12C19.7474 11.8019 19.6676 11.6126 19.5275 11.4725C19.3874 11.3324 19.1981 11.2526 19 11.25H12.75Z" fill="#ffffff"></path> </g></svg>
+                </button>
+            </div>
+
+            <div *ngIf="!currentListId">
+                <h2>Select a list to read its tasks</h2>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,15 @@
+<div class="dialog_container">
+    <h2 mat-dialog-title>Update a List</h2>
+    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="form" (ngSubmit)="updateList(listTitle.value)" action="">
+            <mat-form-field appearance="fill" class="col-12">
+                <mat-label>List title</mat-label>
+                <input matInput #listTitle name="title" placeholder="E.g.: 'My new list'" value="{{currentListEditing.title}}">
+            </mat-form-field>
+            <div class="d-flex justify-content-end gap-2">
+                <button class="text-light" mat-stroked-button mat-dialog-close>Cancel</button>
+                <button class="text-light" mat-stroked-button type="submit" #listTitle>Send</button>
+            </div>
+        </form>
+    </mat-dialog-content>
+</div>

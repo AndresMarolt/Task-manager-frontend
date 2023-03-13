@@ -1,0 +1,27 @@
+
+/* You can add global styles to this file, and also import other style files */
+$blue: #405DE6;
+$purple-blue: #5851DB;
+$purple: #833AB4;
+$purple-red: #C13584;
+$rose: #E1306C;
+$bright-red: #FD1D1D;
+$red-orange: #F56040;
+$orange: #F77737;
+$orange-yellow: #FCAF45;
+$yellow: #FFDC80;
+
+body {
+    // background: linear-gradient(to right, $blue 0% , $purple-blue 10%, $purple 20%, $purple-red 30%, $rose 40%, $bright-red 50%, $red-orange 60%, $orange 70%, 
+    //                                         $orange-yellow 80%, $yellow 90%);
+    background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+body {
+    height: 100%;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

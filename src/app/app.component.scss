@@ -1,0 +1,13 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
+
+$turquoise: #44ddd0;
+$green: #27d7a1;
+$light-green: #45f69e;
+$light: #f8f8f8;
+$dark-green: rgb(0, 100, 100);
+
+body {
+    background: linear-gradient(to right top, $turquoise, $green);
+}
