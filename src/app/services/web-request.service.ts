@@ -9,7 +9,7 @@ export class WebRequestService {
   readonly ROOT_URL;
 
   constructor(private httpClient: HttpClient) {
-    this.ROOT_URL = 'https://task-manager-backend-azure.vercel.app/'
+    this.ROOT_URL = 'https://task-manager-backend-azure.vercel.app'
   }
 
   get(uri: string) {
