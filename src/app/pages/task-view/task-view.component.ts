@@ -71,6 +71,7 @@ export class TaskViewComponent implements OnInit {
     if(event.target.classList.contains('task')) {
       this.taskService.completeTask(task).subscribe((res) => {
         this.taskService.getTasks(this.currentListId);
+        console.log("Completed successfully!");
       })
     }
 

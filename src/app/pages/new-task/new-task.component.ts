@@ -29,8 +29,7 @@ export class NewTaskComponent {
       title: ['', [Validators.required]]
     })
   };
- 
-
+  
   createNewTask(title: string) {
     this.taskService.createListTasks(this.listId, title).subscribe((response: any) => {
       this.taskService.getTasks(this.listId);

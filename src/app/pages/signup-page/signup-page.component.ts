@@ -23,9 +23,6 @@ export class SignupPageComponent {
   onSignupClick(formData: any): any {
     const {email, password} = formData;
     this.authService.signup(email, password).subscribe((res: HttpResponse<any>) => {
-      console.log(res);
-      // this.router.navigate(['/lists']).then(() => window.location.reload());
-      
     })
   }
 }

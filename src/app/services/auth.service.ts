@@ -16,7 +16,6 @@ export class AuthService {
       .pipe(
         shareReplay(),
         tap((response: HttpResponse<any>) => {
-          // THE AUTH TOKENS WILL BE IN THE HEADER OF THIS RESPONSE
           this.setSession(response.body._id, response.headers.get('x-refresh-token'), response.headers.get('x-access-token'))
         })
       )
@@ -27,7 +26,6 @@ export class AuthService {
       .pipe(
         shareReplay(),
         tap((response: HttpResponse<any>) => {
-          // THE AUTH TOKENS WILL BE IN THE HEADER OF THIS RESPONSE
           this.setSession(response.body._id, response.headers.get('x-refresh-token'), response.headers.get('x-access-token'))
         })
       )
