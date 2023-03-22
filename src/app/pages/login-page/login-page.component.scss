@@ -14,4 +14,14 @@ form {
         background-color: #1f54a4;
         color: white;
     }
+
+    div {
+        position: relative;
+
+        .error_message {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
 }

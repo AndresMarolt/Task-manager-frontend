@@ -2,12 +2,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { WebRequestService } from './web-request.service';
 import { Router } from '@angular/router';
-import {shareReplay, tap} from 'rxjs'
+import {shareReplay, Subject, tap} from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private error = new Subject<string>();
 
   constructor(private webService: WebRequestService, private httpClient: HttpClient, private router: Router) { }
 

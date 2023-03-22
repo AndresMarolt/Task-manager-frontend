@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-
+  public errorText: string = '';
   public form: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
@@ -23,8 +23,15 @@ export class LoginPageComponent {
   onLoginClick(formData: any): any {
     const {email, password} = formData;
 
-    this.authService.login(email, password).subscribe((res) => {
-      if(res.status === 200) this.router.navigate(['/lists']).then(() => window.location.reload());
+    this.authService.login(email, password).subscribe((res: HttpResponse<any>) => {
+      if(res.status === 200) {
+        this.router.navigate(['/lists']).then(() => window.location.reload());
+      }
+    }, (err) => {
+      this.errorText = 'Invalid credentials';
+      setTimeout(() => {
+        this.errorText = '';
+      }, 3000);
     })
   }
 }

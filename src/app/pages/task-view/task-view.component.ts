@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from 'src/app/services/list.service';
-import { NewListComponent } from '../new-list/new-list.component';
+import { NewListComponent } from '../../components/new-list/new-list.component';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog'
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Route } from '@angular/router';
-import { NewTaskComponent } from '../new-task/new-task.component';
+import { NewTaskComponent } from '../../components/new-task/new-task.component';
 import { Subscription } from 'rxjs';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/interfaces/task';
 import { List } from 'src/app/interfaces/list';
-import { UpdateListComponent } from '../update-list/update-list.component';
-import { UpdateTaskComponent } from '../update-task/update-task.component';
+import { UpdateListComponent } from '../../components/update-list/update-list.component';
+import { UpdateTaskComponent } from '../../components/update-task/update-task.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -71,7 +71,6 @@ export class TaskViewComponent implements OnInit {
     if(event.target.classList.contains('task')) {
       this.taskService.completeTask(task).subscribe((res) => {
         this.taskService.getTasks(this.currentListId);
-        console.log("Completed successfully!");
       })
     }
 
@@ -91,7 +90,7 @@ export class TaskViewComponent implements OnInit {
 
   deleteList() {
     this.listService.deleteList(this.currentListId).subscribe(() => {
-      
+      this.router.navigate(['/'])
     })
   }
 

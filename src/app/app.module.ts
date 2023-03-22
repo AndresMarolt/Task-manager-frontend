@@ -13,13 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskViewComponent } from './pages/task-view/task-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewListComponent } from './pages/new-list/new-list.component';
-import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { NewListComponent } from './components/new-list/new-list.component';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { WebReqInterceptor } from './services/web-req.interceptor';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
-import { UpdateListComponent } from './pages/update-list/update-list.component';
-import { UpdateTaskComponent } from './pages/update-task/update-task.component';
+import { UpdateListComponent } from './components/update-list/update-list.component';
+import { UpdateTaskComponent } from './components/update-task/update-task.component';
 
 
 @NgModule({

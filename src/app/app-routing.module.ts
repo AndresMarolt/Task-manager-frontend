@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewListComponent } from './pages/new-list/new-list.component';
+import { NewListComponent } from './components/new-list/new-list.component';
 import { TaskViewComponent } from './pages/task-view/task-view.component';
-import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { NewTaskComponent } from './components/new-task/new-task.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 

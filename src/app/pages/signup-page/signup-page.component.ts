@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupPageComponent {
 
   public form: FormGroup;
+  public errorText: string = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.form = this.fb.group({
@@ -23,6 +24,14 @@ export class SignupPageComponent {
   onSignupClick(formData: any): any {
     const {email, password} = formData;
     this.authService.signup(email, password).subscribe((res: HttpResponse<any>) => {
+      if(res.status === 200) {
+        this.router.navigate(['/lists']).then(() => window.location.reload());
+      } 
+    }, (err) => {
+      this.errorText = 'User already exists';
+      setTimeout(() => {
+        this.errorText = '';
+      }, 3000);
     })
   }
 }

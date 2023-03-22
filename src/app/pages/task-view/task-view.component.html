@@ -3,27 +3,30 @@
         <mat-icon aria-hidden="false" >logout</mat-icon>
     </button>
 </div>
-<div class="centered-content mx-auto pt-4 d-flex flex-column flex-md-row justify-content-start justify-content-md-between col-11 col-sm-9">
+
+<div class="task_view-container centered-content mx-auto pt-4 d-flex flex-column flex-md-row justify-content-start justify-content-md-between col-11 col-sm-9">
     <div class="d-flex flex-column flex-sm-row align-items-center align-items-md-start center col-12 border-radius" style="background-color: rgb(236, 236, 236);">
         
-        <div class="lists_section bg-light p-4 p-md-3 p-lg-5 col-12 col-sm-4">
-            <div class="d-flex align-items-center justify-content-center justify-content-md-between">
-                <h2 class="mb-2 text-center">Lists</h2>
-                <div class="settings-icon">
-                    <button mat-button [matMenuTriggerFor]="beforeMenu">
-                        <mat-icon>settings</mat-icon>
-                    </button>
-                    <mat-menu #beforeMenu="matMenu" xPosition="before">
-                        <button mat-menu-item (click)="onClickEditList()">Edit</button>
-                        <button mat-menu-item (click)="deleteList()" ><p class="text-danger mb-0">Delete</p></button>
-                    </mat-menu>
+        <div class="lists_section d-flex flex-column justify-content-between bg-light p-4 p-md-3 p-lg-5 col-12 col-sm-4">
+            <div class="">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-between">
+                    <h2 class="mb-2 text-center">Lists</h2>
+                    <div class="settings-icon">
+                        <button mat-button [matMenuTriggerFor]="beforeMenu">
+                            <mat-icon>settings</mat-icon>
+                        </button>
+                        <mat-menu #beforeMenu="matMenu" xPosition="before">
+                            <button mat-menu-item (click)="onClickEditList()">Edit</button>
+                            <button mat-menu-item (click)="deleteList()" ><p class="text-danger mb-0">Delete</p></button>
+                        </mat-menu>
+                    </div>
                 </div>
-            </div>
-
-            <div class="d-flex flex-column justify-content-between lists-container">
-                <button class="p-1 text-decoration-none" href="" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
-                    <p>{{list.title}}</p>
-                </button>
+    
+                <div class="d-flex flex-column justify-content-between lists-container">
+                    <button class="p-1 text-decoration-none" href="" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
+                        <p>{{list.title}}</p>
+                    </button>
+                </div>
             </div>
             
             <button class="col-12 mt-4 add-list" mat-stroked-button (click)="openListsDialog()">+ List</button>
@@ -59,8 +62,13 @@
                 </button>
             </div>
 
-            <div *ngIf="!currentListId">
+            <div *ngIf="!currentListId && lists.length">
                 <h2>Select a list to read its tasks</h2>
+            </div>
+
+            <div *ngIf="!currentListId && !lists.length">
+                <h2>Tasks</h2>
+                <p>You'll be able to add tasks as soon as you create a list</p>
             </div>
         </div>
     </div>

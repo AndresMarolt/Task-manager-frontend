@@ -8,9 +8,18 @@
 form {
     background-color: rgb(242, 242, 242);
     border-radius: 8px;
-
+    
     button {
         background-color: #1f54a4;
         color: white;
+    }
+    div {
+        position: relative;
+        
+        .error_message {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
